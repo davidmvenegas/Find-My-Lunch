@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Lunch</title>
+    <link rel="shortcut icon" href="../main-page-images/yelp-icon.svg" />
+    <link rel="stylesheet" href="/starter-page/starter-page.css">
+</head>
+<body class="animate-in">
+        <div class="navbar-container">
+            <form class="navbar">
+                <div class="food-type-container">
+                    <div class="food-type-item food-type-item-all ">
+                        <input id="food-type-all" type="radio" name="food-type" value="all" checked = "true"/>
+                        <label class="photo-select all" for="food-type-all" ></label>
+                    </div>
+                    <div class="food-type-item">
+                        <input id="food-type-pizza" type="radio" name="food-type" value="pizza" />
+                        <label class="photo-select pizza" for="food-type-pizza"></label>
+                    </div>
+                    <div class="food-type-item">
+                        <input id="food-type-burger" type="radio" name="food-type" value="burger"/>
+                        <label class="photo-select burger" for="food-type-burger"></label>
+                    </div>
+                    <div class="food-type-item">
+                        <input id="food-type-chinese" type="radio" name="food-type" value="chinese"/>
+                        <label class="photo-select chinese" for="food-type-chinese"></label>
+                    </div>
+                    <div class="food-type-item">
+                        <input id="food-type-burrito" type="radio" name="food-type" value="burrito"/>
+                        <label class="photo-select burrito" for="food-type-burrito"></label>
+                    </div>
+                    <div class="food-type-item">
+                        <input id="food-type-coffee" type="radio" name="food-type" value="coffee"/>
+                        <label class="photo-select coffee" for="food-type-coffee"></label>
+                    </div>
+                    <div class="food-type-item">
+                        <input id="food-type-salad" type="radio" name="food-type" value="salad"/>
+                        <label class="photo-select salad" for="food-type-salad"></label>
+                    </div>
+                    <div class="food-type-item">
+                        <input id="food-type-beer" type="radio" name="food-type" value="beer"/>
+                        <label class="photo-select beer" for="food-type-beer"></label>
+                    </div>
+                </div>
+                <div class="menu-toggle-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </form>
+        </div>
+        <div class="card-container">
+            <div class="loader" style="opacity:0;"></div>
+            <!-- CARDS ARE LOADED HERE -->
+        </div>
+        <div class="sidebar">
+            <ul class="sidebar-container">
+                <div class="menu-toggle-btn-up">
+                    <span id="line-1"></span>
+                    <span id="line-2"></span>
+                    <span id="line-3"></span>
+                </div>
+                <div class="sidebar-item-wrapper">
+                    <li class="sidebar-item" id="thing1">Price</li>
+                        <div class="price-checkbox-wrapper">
+                            <div class="price-checkbox-item">
+                                <input type="checkbox" name="price" id="price-checkbox-1"/>
+                                <label class="price-item-select" for="price-checkbox-1">$</label>
+                            </div>
+                            <div class="price-checkbox-item">
+                                <input type="checkbox" name="price" id="price-checkbox-2"/>
+                                <label class="price-item-select" for="price-checkbox-2">$$</label>
+                            </div>
+                            <div class="price-checkbox-item">
+                                <input type="checkbox" name="price" id="price-checkbox-3"/>
+                                <label class="price-item-select" for="price-checkbox-3">$$$</label>
+                            </div>
+                            <div class="price-checkbox-item">
+                                <input type="checkbox" name="price" id="price-checkbox-4"/>
+                                <label class="price-item-select" for="price-checkbox-4">$$$$</label>
+                            </div>
+                        </div>
+                </div>
+                <div class="sidebar-item-wrapper">
+                <li class="sidebar-item" id="thing2">Minimum Rating</li>
+                    <div class="rating-checkbox-wrapper">
+                        <div class="rating-checkbox-item">
+                            <input type="radio" name="rating" id="rating-checkbox-5"/>
+                            <label class="rating-item-select"  for="rating-checkbox-5"><img class="rating-image" src="/starter-page/star_images/regular_5.png" alt="5 stars" id="rating-image"></label>
+                        </div>
+                        <div class="rating-checkbox-item">
+                            <input type="radio" name="rating" id="rating-checkbox-4"/>
+                            <label class="rating-item-select" for="rating-checkbox-4"><img class="rating-image" src="/starter-page/star_images/regular_4.png" alt="4 stars" id="rating-image"></label>
+                        </div>
+                        <div class="rating-checkbox-item">
+                            <input type="radio" name="rating" id="rating-checkbox-3"/>
+                            <label class="rating-item-select" for="rating-checkbox-3"><img class="rating-image" src="/starter-page/star_images/regular_3.png" alt="3 stars" id="rating-image"></label>
+                        </div>
+                        <div class="rating-checkbox-item">
+                            <input type="radio" name="rating" id="rating-checkbox-2"/>
+                            <label class="rating-item-select" for="rating-checkbox-2"><img class="rating-image" src="/starter-page/star_images/regular_2.png" alt="2 stars" id="rating-image"></label>
+                        </div>
+                        <div class="rating-checkbox-item">
+
+                            <input type="radio" name="rating" id="rating-checkbox-1" checked = "true"/>
+
+                            <label class="rating-item-select" for="rating-checkbox-1"><img class="rating-image" src="/starter-page/star_images/regular_1.png" alt="1 stars" id="rating-image"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidebar-item-wrapper">
+                <li class="sidebar-item" id="thing3">Distance</li>
+                <div class="distance-slider-wrapper">
+                    <h3 class="distance-value"><span id="distanceValue">10</span> blocks</h3><br>
+                    <input class="distance-slider" id="distanceSlider" type="range" value="10" name="distance" min="1" max="20" onchange="distanceSlide(this.value)" onmousemove="distanceSlide(this.value)">
+                </div>
+                </div>
+                <script>
+                    function distanceSlide(value) {
+                        document.getElementById('distanceValue').innerHTML = value
+                    }
+                </script>
+            </ul>
+            <input type="submit" value="Filter" class="submit-button" id = "submit-button">
+        </div>
+    <script src="/starter-page/starter-page.js"></script>
+</body>
+</html>
