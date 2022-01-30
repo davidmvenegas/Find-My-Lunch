@@ -12,7 +12,7 @@ function getYelpData(term, price, radius = 700, stars = 0) {
         let {latitude, longitude} = yourLocation.coords
         let limit = 50
 
-        fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?latitude=${latitude}&longitude=${longitude}&radius=${radius}&term=${term}&limit=${limit}&price=${price}`, {
+        fetch(`https://findmylunch-cors.herokuapp.com/https://api.yelp.com/v3/businesses/search?latitude=${latitude}&longitude=${longitude}&radius=${radius}&term=${term}&limit=${limit}&price=${price}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -51,6 +51,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     let bar = document.getElementById('food-type-beer')
     let distance = 805
     let starsChecked = 0
+
     all.addEventListener('click', ()=>{
         termSearch = 'restaurants'
         reloadElements(termSearch, price, distance, starsChecked)
@@ -83,17 +84,13 @@ document.addEventListener('DOMContentLoaded', ()=>{
     coffee.addEventListener('click',()=>{
         termSearch = 'coffee'
         reloadElements(termSearch, price, distance, starsChecked)
-
     }
     )
     bar.addEventListener('click',()=>{
         termSearch = 'bar'
         reloadElements(termSearch, price, distance, starsChecked)
-
     }
     )
-    
-
 
     let toggleButton = document.querySelector('.menu-toggle-btn')
     let toggleButtonUp = document.querySelector('.menu-toggle-btn-up')
@@ -126,11 +123,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
         let allSelected = (priceOne.checked && priceTwo.checked && priceThree.checked && priceFour.checked)
         let noneSelected = (!priceOne.checked && !priceTwo.checked && !priceThree.checked && !priceFour.checked)
 
-
         // giving price filter functionality
         if (allSelected || noneSelected){
-          price = '1,2,3,4'
-      }
+            price = '1,2,3,4'
+        }
         else { 
                 if (priceOne.checked){
                     price += '1'
@@ -162,8 +158,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
                     fourSelected = true
                 }
             }}
-
         }
+
         let ratingFive = document.getElementById('rating-checkbox-5')
         let ratingFour = document.getElementById('rating-checkbox-4')
         let ratingThree = document.getElementById('rating-checkbox-3')
@@ -171,10 +167,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
         let ratingOne = document.getElementById('rating-checkbox-1')
 
         if (ratingFive.checked){
-             starsChecked = 5
-         }
-         else if (ratingFour.checked){
-             starsChecked = 4
+            starsChecked = 5
+        }
+        else if (ratingFour.checked){
+            starsChecked = 4
         }
         else if (ratingThree.checked){
             starsChecked = 3
@@ -188,10 +184,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
         distance = parseInt(distanceSelected.value * 70)
         
         reloadElements(termSearch, price, distance, starsChecked)
-        console.log(termSearch, price, distance, starsChecked)
-
     })
-
 })
 
 
@@ -243,10 +236,10 @@ function makeYelpElement(element, latitude, longitude) {
     }
 
     let restImg 
-    if(element['image_url']){
+    if (element['image_url']){
         restImg = element['image_url']
     }
-    else{
+    else {
         // restImg = 'SET IMAGE TO DEFAULT IMAGE'
     }
 
@@ -300,5 +293,4 @@ function reloadElements(termSearch,price, distance, starsChecked){
     document.querySelector('.card-container').replaceChildren()
         createLoader()
         getYelpData(termSearch, price, distance, starsChecked)
-        console.log(distance)
 }
